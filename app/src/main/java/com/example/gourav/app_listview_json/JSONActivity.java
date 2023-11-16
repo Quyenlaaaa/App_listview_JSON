@@ -14,6 +14,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 public class JSONActivity extends AppCompatActivity {
 
@@ -34,6 +37,7 @@ public class JSONActivity extends AppCompatActivity {
         listView.setAdapter(Adapter);
 
         new JsonReader().execute("https://dummyjson.com/users");
+        AppCenter.start(getApplication(), "d382a962-17ad-4dc7-9fa6-c9fd89156b9d", Analytics.class, Crashes.class);
     }
 
     private class JsonReader extends AsyncTask<String, Void, String>
